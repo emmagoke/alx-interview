@@ -47,5 +47,5 @@ def stat() -> None:
     except KeyboardInterrupt:
         print_data(total_size, status_code)
 
-
-stat()
+if __name__ == '__main__':
+    stat()
