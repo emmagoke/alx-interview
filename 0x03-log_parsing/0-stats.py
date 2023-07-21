@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 """
 This script reads stdin line by line and computes metrics.
 """
@@ -30,13 +30,15 @@ def stat() -> None:
             # print(len(stdin.split()))
             l_stdin = line.split()
             # l_stdin = stdin.split()
-            if len(l_stdin) == 9:
+            count += 1
+            try:
                 total_size += int(l_stdin[-1])
                 if l_stdin[-2] in status_code:
                     status_code[l_stdin[-2]] += 1
                 else:
                     status_code[l_stdin[-2]] = 1
-                count += 1
+            except BaseException:
+                pass
 
             if count % 10 == 0:
                 print_data(total_size, status_code)
