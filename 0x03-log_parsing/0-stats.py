@@ -2,7 +2,7 @@
 """
 This script reads stdin line by line and computes metrics.
 """
-# import sys
+import sys
 
 
 def print_data(file_size: int, status_code: dict) -> None:
@@ -24,12 +24,12 @@ def stat() -> None:
     total_size = 0
     status_code = {}
     try:
-        stdin = input()
-        # for line in sys.stdin:
-        while stdin:
+        # stdin = input()
+        for line in sys.stdin:
+            # while stdin:
             # print(len(stdin.split()))
-            # l_stdin = line.split()
-            l_stdin = stdin.split()
+            l_stdin = line.split()
+            # l_stdin = stdin.split()
             if len(l_stdin) == 9:
                 total_size += int(l_stdin[-1])
                 if l_stdin[-2] in status_code:
@@ -41,7 +41,7 @@ def stat() -> None:
             if count % 10 == 0:
                 print_data(total_size, status_code)
 
-            stdin = input()
+            # stdin = input()
     except KeyboardInterrupt:
         print_data(total_size, status_code)
 
